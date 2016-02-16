@@ -21,6 +21,8 @@ public class Vuelo extends Entity {
   
   private String fecha;
   
+  private Boolean finalizado;
+  
   public boolean agregarTripulante(final Tripulante tripulante) {
     return this.tripulantes.add(tripulante);
   }
@@ -29,12 +31,13 @@ public class Vuelo extends Entity {
     return this.tripulantes.remove(tripulante);
   }
   
-  public Vuelo(final String numeroDeVuelo, final Set<Tripulante> tripulacion, final String origenNuevo, final String destinoNuevo, final String fechaNueva) {
+  public Vuelo(final String numeroDeVuelo, final Set<Tripulante> tripulacion, final String origenNuevo, final String destinoNuevo, final String fechaNueva, final Boolean finalizadoNuevo) {
     this.numero = numeroDeVuelo;
     this.tripulantes = tripulacion;
     this.origen = origenNuevo;
     this.destino = destinoNuevo;
     this.fecha = fechaNueva;
+    this.finalizado = finalizadoNuevo;
   }
   
   public Vuelo() {
@@ -86,5 +89,14 @@ public class Vuelo extends Entity {
   
   public void setFecha(final String fecha) {
     this.fecha = fecha;
+  }
+  
+  @Pure
+  public Boolean getFinalizado() {
+    return this.finalizado;
+  }
+  
+  public void setFinalizado(final Boolean finalizado) {
+    this.finalizado = finalizado;
   }
 }

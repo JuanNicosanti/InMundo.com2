@@ -9,6 +9,8 @@ import java.util.Set;
 import java.util.function.Consumer;
 import org.apache.commons.collections15.Predicate;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.uqbar.commons.model.CollectionBasedHome;
 import repos.RepoTripulantes;
 
@@ -54,11 +56,11 @@ public class RepoVuelos extends CollectionBasedHome<Vuelo> {
   public RepoVuelos() {
     final HashSet<String> tripulacion = CollectionLiterals.<String>newHashSet("Fernando", "Florencia", "Raul");
     final HashSet<String> tripulacion2 = CollectionLiterals.<String>newHashSet("Fernando", "Florencia", "Sergio");
-    this.crearVuelo("Y2MW321NKISS", tripulacion, "paris", "barcelona", "02/03/2016");
-    this.crearVuelo("Y3MW123MXXAS", tripulacion2, "Ezeiza", "Cordoba", "08/09/2016");
+    this.crearVuelo("Y2MW321NKISS", tripulacion, "paris", "barcelona", "02/03/2016", Boolean.valueOf(false));
+    this.crearVuelo("Y3MW123MXXAS", tripulacion2, "Ezeiza", "Cordoba", "08/09/2016", Boolean.valueOf(false));
   }
   
-  public void crearVuelo(final String numeroDeVuelo, final Set<String> tripulacionEnString, final String origenNuevo, final String destinoNuevo, final String fechaNueva) {
+  public void crearVuelo(final String numeroDeVuelo, final Set<String> tripulacionEnString, final String origenNuevo, final String destinoNuevo, final String fechaNueva, final Boolean finalizadoNuevo) {
     RepoTripulantes _instance = RepoTripulantes.getInstance();
     this.repoTripulantes = _instance;
     final Consumer<String> _function = new Consumer<String>() {
@@ -70,7 +72,19 @@ public class RepoVuelos extends CollectionBasedHome<Vuelo> {
       }
     };
     tripulacionEnString.forEach(_function);
-    Vuelo _vuelo = new Vuelo(numeroDeVuelo, this.tripulacionEnCurso, origenNuevo, destinoNuevo, fechaNueva);
+    Vuelo _vuelo = new Vuelo(numeroDeVuelo, this.tripulacionEnCurso, origenNuevo, destinoNuevo, fechaNueva, finalizadoNuevo);
     this.create(_vuelo);
+  }
+  
+  public List<Vuelo> vuelosNoFinalizados() {
+    List<Vuelo> _allInstances = this.allInstances();
+    final Function1<Vuelo, Boolean> _function = new Function1<Vuelo, Boolean>() {
+      public Boolean apply(final Vuelo it) {
+        Boolean _finalizado = it.getFinalizado();
+        return Boolean.valueOf((!(_finalizado).booleanValue()));
+      }
+    };
+    Iterable<Vuelo> _filter = IterableExtensions.<Vuelo>filter(_allInstances, _function);
+    return IterableExtensions.<Vuelo>toList(_filter);
   }
 }
