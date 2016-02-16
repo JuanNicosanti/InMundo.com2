@@ -7,7 +7,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('vuelos', {
       url: '/vuelos',
-      templateUrl: 'templates/index.html',
+      templateUrl: 'templates/vuelos.html',
       controller: 'VuelosController as vuelosCtrl',
       data: {},
       resolve: {}
