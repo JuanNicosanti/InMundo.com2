@@ -35,5 +35,6 @@ app.controller('tripulacionVueloController', function (vuelosService) {
 	
 	var self = this
 	
-}
+	
+});
   
