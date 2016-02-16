@@ -17,7 +17,7 @@ class VuelosController {
 	extension JSONUtils = new JSONUtils
 
 	def static void main(String[] args) {
-		XTRest.start(VuelosController, 9994)
+		XTRest.start(VuelosController, 9995)
 	}
 
 	@Get("/vuelos")
@@ -38,8 +38,8 @@ class VuelosController {
 		}
 	}
 
-	@Get('/vuelos/search')
-	def Result buscar(String numero) {
+	@Get('/vuelos/:numero')
+	def Result buscar() {
 		val vueloBuscado = new Vuelo
 		vueloBuscado.numero = numero
 		ok(RepoVuelos.instance.searchByExample(vueloBuscado).toJson)
