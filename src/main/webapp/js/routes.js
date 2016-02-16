@@ -18,10 +18,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		controller : 'tripulacionVueloController as tripulacionCtrl',
 		data : {},
 		resolve : {
-		// vueloData : ['vueloSeleccionadoService', '$stateParams',
-		// function(vueloSeleccionadoService, $stateParams) {
-		// return vueloSeleccionadoService.find($stateParams.id);
-		// }],
+		 vueloData : ['vueloSeleccionadoService', '$stateParams',
+		 function(vueloSeleccionadoService, $stateParams) {
+		 return vueloSeleccionadoService.find($stateParams.id);
+		 }],
 		}
 	})
 });

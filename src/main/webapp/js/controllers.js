@@ -31,10 +31,12 @@ app.controller('VuelosController', function (vuelosService) {
 });
 
 
-app.controller('tripulacionVueloController', function (vuelosService) {
+app.controller('tripulacionVueloController',['vueloData', function (vuelosService) {
 	
 	var self = this
 	
+	self.vuelo = vueloData.data
 	
-});
+	
+}]);
   
