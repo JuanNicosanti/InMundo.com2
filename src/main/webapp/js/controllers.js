@@ -1,20 +1,18 @@
 'use strict';
 
-app.controller('VuelosController', function (vuelosService, $timeout) {
+app.controller('VuelosController', function (vuelosService) {
 
   var self = this;
 
   self.errors = [];
   
-  function transformarAVuelo(jsonVuelo){
-	  return Vuelo.asVuelo(jsonVuelo);
-  }
+
   
   this.getVuelos = function () {
-	    vuelosService.findAll(function (response) {
-	      self.vuelos = _.map(response.data, transformarAVuelo);
-	    }, notificarError);
-	  }
+	    vuelosService.findAll(function (data) {
+	      self.vuelos = data
+	  });
+  }
   
   function notificarError(mensaje) {
 	    self.errors.push(mensaje);
@@ -24,7 +22,12 @@ app.controller('VuelosController', function (vuelosService, $timeout) {
 	        self.errors.pop();
 	    }, 3000);
 	  };
-
+	  
+	  
+	function transformarAVuelo(jsonVuelo){
+		  return Vuelo.asVuelo(jsonVuelo);
+	  }
+	  
 	  self.getVuelos();
 });
   
