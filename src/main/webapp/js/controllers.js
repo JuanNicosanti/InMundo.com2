@@ -29,4 +29,11 @@ app.controller('VuelosController', function (vuelosService) {
 	  
 	  self.getVuelos();
 });
+
+
+app.controller('tripulacionVueloController', function (vuelosService) {
+	
+	var self = this
+	
+}
   
