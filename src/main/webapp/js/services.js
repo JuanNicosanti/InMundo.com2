@@ -4,4 +4,13 @@ app.service('vuelosService', function ($http) {
     $http.get('/vuelos').then(callback);
   }
   
+  
+  app.service('vueloSeleccionadoService', [ '$http', function($http) {
+		
+		this.find = function(idVuelo) {
+			return $http.get('/vuelos/'+ idVuelo);
+		};
+		
+  }]);
+  
 });

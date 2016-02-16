@@ -1,3 +1,6 @@
+		<div class="page-header">
+			<h1>Listado de vuelos</h1>
+		</div>
 <div class="col-lg-12">
 				<div class="filtro">
 					<form role="form">
@@ -22,7 +25,7 @@
 							<tr
 								data-ng-repeat="vuelo in vuelosCtrl.vuelos | filter:vueloBuscado"
 								class="animate-repeat">
-								<td class="col-xs-4">{{vuelo.numero}}</td>
+								<td class="col-xs-4"><a href="#/vuelos/{{vuelo.id}}">{{vuelo.numero}}</a></td>
 								<td class="col-xs-3">{{vuelo.origen}}</td>
 								<td class="col-xs-3">{{vuelo.destino}}</td>
 								<td class="col-xs-3">{{vuelo.fecha}}</td>
