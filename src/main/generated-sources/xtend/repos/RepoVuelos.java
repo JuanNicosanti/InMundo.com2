@@ -56,7 +56,7 @@ public class RepoVuelos extends CollectionBasedHome<Vuelo> {
   public RepoVuelos() {
     final HashSet<String> tripulacion = CollectionLiterals.<String>newHashSet("Fernando", "Florencia", "Raul");
     final HashSet<String> tripulacion2 = CollectionLiterals.<String>newHashSet("Fernando", "Florencia", "Sergio");
-    this.crearVuelo("Y2MW321NKISS", tripulacion, "paris", "barcelona", "02/03/2016", Boolean.valueOf(false));
+    this.crearVuelo("Y2MW321NKISS", tripulacion, "Paris", "Barcelona", "02/03/2016", Boolean.valueOf(false));
     this.crearVuelo("Y3MW123MXXAS", tripulacion2, "Ezeiza", "Cordoba", "08/09/2016", Boolean.valueOf(false));
   }
   

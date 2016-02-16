@@ -41,7 +41,7 @@ class RepoVuelos extends CollectionBasedHome<Vuelo> {
 	new() {
 		val tripulacion = newHashSet("Fernando","Florencia","Raul")
 		val tripulacion2 = newHashSet("Fernando", "Florencia","Sergio")
-		this.crearVuelo("Y2MW321NKISS",tripulacion, "paris", "barcelona", "02/03/2016", false)
+		this.crearVuelo("Y2MW321NKISS",tripulacion, "Paris", "Barcelona", "02/03/2016", false)
 		this.crearVuelo("Y3MW123MXXAS",  tripulacion2, "Ezeiza", "Cordoba", "08/09/2016", false)
 	}
 	
