@@ -15,6 +15,12 @@ public class Vuelo extends Entity {
   
   private Set<Tripulante> tripulantes;
   
+  private String origen;
+  
+  private String destino;
+  
+  private String fecha;
+  
   public boolean agregarTripulante(final Tripulante tripulante) {
     return this.tripulantes.add(tripulante);
   }
@@ -23,9 +29,12 @@ public class Vuelo extends Entity {
     return this.tripulantes.remove(tripulante);
   }
   
-  public Vuelo(final String numeroDeVuelo, final Set<Tripulante> tripulacion) {
+  public Vuelo(final String numeroDeVuelo, final Set<Tripulante> tripulacion, final String origenNuevo, final String destinoNuevo, final String fechaNueva) {
     this.numero = numeroDeVuelo;
     this.tripulantes = tripulacion;
+    this.origen = origenNuevo;
+    this.destino = destinoNuevo;
+    this.fecha = fechaNueva;
   }
   
   public Vuelo() {
@@ -50,5 +59,32 @@ public class Vuelo extends Entity {
   
   public void setTripulantes(final Set<Tripulante> tripulantes) {
     this.tripulantes = tripulantes;
+  }
+  
+  @Pure
+  public String getOrigen() {
+    return this.origen;
+  }
+  
+  public void setOrigen(final String origen) {
+    this.origen = origen;
+  }
+  
+  @Pure
+  public String getDestino() {
+    return this.destino;
+  }
+  
+  public void setDestino(final String destino) {
+    this.destino = destino;
+  }
+  
+  @Pure
+  public String getFecha() {
+    return this.fecha;
+  }
+  
+  public void setFecha(final String fecha) {
+    this.fecha = fecha;
   }
 }

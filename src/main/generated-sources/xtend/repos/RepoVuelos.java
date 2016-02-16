@@ -54,11 +54,11 @@ public class RepoVuelos extends CollectionBasedHome<Vuelo> {
   public RepoVuelos() {
     final HashSet<String> tripulacion = CollectionLiterals.<String>newHashSet("Fernando", "Florencia", "Raul");
     final HashSet<String> tripulacion2 = CollectionLiterals.<String>newHashSet("Fernando", "Florencia", "Sergio");
-    this.crearVuelo("Y2MW", tripulacion);
-    this.crearVuelo("Y3MW", tripulacion2);
+    this.crearVuelo("Y2MW321NKISS", tripulacion, "paris", "barcelona", "02/03/2016");
+    this.crearVuelo("Y3MW123MXXAS", tripulacion2, "Ezeiza", "Cordoba", "08/09/2016");
   }
   
-  public void crearVuelo(final String numeroDeVuelo, final Set<String> tripulacionEnString) {
+  public void crearVuelo(final String numeroDeVuelo, final Set<String> tripulacionEnString, final String origenNuevo, final String destinoNuevo, final String fechaNueva) {
     RepoTripulantes _instance = RepoTripulantes.getInstance();
     this.repoTripulantes = _instance;
     final Consumer<String> _function = new Consumer<String>() {
@@ -70,7 +70,7 @@ public class RepoVuelos extends CollectionBasedHome<Vuelo> {
       }
     };
     tripulacionEnString.forEach(_function);
-    Vuelo _vuelo = new Vuelo(numeroDeVuelo, this.tripulacionEnCurso);
+    Vuelo _vuelo = new Vuelo(numeroDeVuelo, this.tripulacionEnCurso, origenNuevo, destinoNuevo, fechaNueva);
     this.create(_vuelo);
   }
 }

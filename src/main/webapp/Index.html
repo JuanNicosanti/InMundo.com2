@@ -18,7 +18,7 @@
 
 <!-- ANGULAR -->
 <script src="node_modules/angular/angular.min.js"></script>
- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+
 
 <!-- ANGULAR-UI ROUTER -->
 <script
@@ -57,11 +57,17 @@
 						<tbody>
 							<tr>
 								<th>Numero de vuelo</th>
+								<th>Origen</th>
+								<th>Destino</th>
+								<th>Fecha</th>
 							</tr>
 							<tr
 								data-ng-repeat="vuelo in vuelosCtrl.vuelos"
 								class="animate-repeat">
 								<td class="col-xs-4">{{vuelo.numero}}</td>
+								<td class="col-xs-3">{{vuelo.origen}}</td>
+								<td class="col-xs-2">{{vuelo.destino}}</td>
+								<td class="col-xs-1">{{vuelo.fecha}}</td>
 							</tr>
 						</tbody>
 					</table>
@@ -81,5 +87,6 @@
 	<script src="js/app.js"></script>
 	<script src="js/controllers.js"></script>
 	<script src="js/services.js"></script>
+	<script src="js/vuelo.js"></script>
 </body>
 </html>

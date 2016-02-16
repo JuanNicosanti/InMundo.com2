@@ -8,6 +8,9 @@ import org.uqbar.commons.model.Entity
 class Vuelo extends Entity {
 	String numero
 	Set<Tripulante> tripulantes
+	String origen
+	String destino
+	String fecha
 
 	def agregarTripulante(Tripulante tripulante) {
 
@@ -18,10 +21,13 @@ class Vuelo extends Entity {
 		tripulantes.remove(tripulante)
 	}
 
-	new(String numeroDeVuelo, Set<Tripulante> tripulacion) {
+	new(String numeroDeVuelo, Set<Tripulante> tripulacion, String origenNuevo, String destinoNuevo, String fechaNueva) {
 
 		numero = numeroDeVuelo
 		tripulantes = tripulacion
+		origen = origenNuevo
+		destino = destinoNuevo
+		fecha = fechaNueva
 	}
 
 	new() {

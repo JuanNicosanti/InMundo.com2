@@ -41,13 +41,13 @@ class RepoVuelos extends CollectionBasedHome<Vuelo> {
 	new() {
 		val tripulacion = newHashSet("Fernando","Florencia","Raul")
 		val tripulacion2 = newHashSet("Fernando", "Florencia","Sergio")
-		this.crearVuelo("Y2MW",tripulacion)
-		this.crearVuelo("Y3MW",  tripulacion2)
+		this.crearVuelo("Y2MW321NKISS",tripulacion, "paris", "barcelona", "02/03/2016")
+		this.crearVuelo("Y3MW123MXXAS",  tripulacion2, "Ezeiza", "Cordoba", "08/09/2016")
 	}
 	
-	def crearVuelo( String numeroDeVuelo,Set<String> tripulacionEnString){
+	def crearVuelo( String numeroDeVuelo,Set<String> tripulacionEnString, String origenNuevo, String destinoNuevo, String fechaNueva){
 		repoTripulantes = RepoTripulantes.instance
 		tripulacionEnString.forEach[tripulacionEnCurso.add(repoTripulantes.searchByExample(new Tripulante(it)).get(0))]
-		this.create(new Vuelo(numeroDeVuelo,tripulacionEnCurso))
+		this.create(new Vuelo(numeroDeVuelo,tripulacionEnCurso, origenNuevo, destinoNuevo,fechaNueva))
 	}
 }

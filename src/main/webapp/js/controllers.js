@@ -6,11 +6,10 @@ app.controller('VuelosController', function (vuelosService) {
 
   self.errors = [];
   
-
   
   this.getVuelos = function () {
 	    vuelosService.findAll(function (data) {
-	      self.vuelos = data
+	      self.vuelos = _.map(data.data, Vuelo.asVuelo);
 	  });
   }
   
