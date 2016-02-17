@@ -45,3 +45,27 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+/target/
+/target/
+/target/
+/target/
+/target/
+
+/src/test/generated-sources/
+/src/main/generated-sources/
+.project
+.classpath
+.settings
+/target/
+/target/
+/target/
+/target/
+/target/
+/target/
+/target/
+/target/
+/target/
+/target/
+/target/
+/target/
+/target/
