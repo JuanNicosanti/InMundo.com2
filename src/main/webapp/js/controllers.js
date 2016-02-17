@@ -39,14 +39,25 @@ app.controller('VuelosController', ['vuelosService', '$scope', '$state', functio
 	  self.getVuelos();
 }]);
 
-
-app.controller('tripulacionVueloController', function (vuelosService, vueloData, vueloSeleccionadoService, $scope) {
+app.controller('tripulacionVueloController', function (vuelosService, vueloData, vueloSeleccionadoService, $scope, $state) {
 	
 	var self = this;
 	
 	this.vuelo = vueloData.data;
 	
 	$scope.tripulantes = self.vuelo.tripulantes;
+	
+	self.numeroDeVuelo = self.vuelo.numero
+	
+	this.volverAVuelos = function(){
+		$state.go('vuelos');
+	}
+	
+	this.eliminarTripulante = function(index){
+		$scope.tripulante = index.nombre;
+		vueloSeleccionadoService.eliminarTripu({nombre:$scope.tripulantes[index].nombre, vuelo:self.vuelo.id});
+		$scope.tripulantes.splice(index,1);
+	}
 	
 });
   

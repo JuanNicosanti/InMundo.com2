@@ -10,6 +10,10 @@ import org.uqbar.xtrest.http.ContentType
 import org.uqbar.xtrest.json.JSONUtils
 import repos.RepoTripulantes
 import repos.RepoVuelos
+import org.uqbar.xtrest.api.annotation.Put
+import org.uqbar.xtrest.api.annotation.Body
+import domain.Tripulante
+import domain.TripulanteVuelo
 
 @Controller
 class VuelosController {
@@ -66,6 +70,19 @@ class VuelosController {
 		}
 	}
 	*/
+	
+	@Put("/eliminarTripu")
+	def Result eliminarTripu(@Body String body){
+		println(body)
+		var TripulanteVuelo tripuVuelo = body.fromJson(TripulanteVuelo)
+		var vuelo = RepoVuelos.instance.searchById(tripuVuelo.vuelo)
+		println(tripuVuelo.vuelo)
+		vuelo.eliminarTripulante(tripuVuelo.nombre)
+		println(vuelo.tripulantes.size())
+		response.contentType = ContentType.APPLICATION_JSON
+		ok(vuelo.toJson)
+		
+	}
 
 	@Get("/tripulantes")
 	def Result tripulantes() {
