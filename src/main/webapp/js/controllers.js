@@ -54,7 +54,7 @@ app.controller('tripulacionVueloController', function (vuelosService, vueloData,
 	}
 	
 	this.eliminarTripulante = function(index){
-		$scope.tripulante = index.nombre;
+		$scope.tripulante=index.nombre;
 		vueloSeleccionadoService.eliminarTripu({nombre:$scope.tripulantes[index].nombre, vuelo:self.vuelo.id});
 		$scope.tripulantes.splice(index,1);
 	}

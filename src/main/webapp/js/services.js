@@ -16,7 +16,7 @@ app.service('vueloSeleccionadoService', [ '$http', function ($http){
 		  return $http.get('/vuelos/'+ idVuelo);
 	};
 	
-	this.eliminarTripu = function(body, callback){
+	this.eliminarTripu = function(body, callback) {
 		 return $http.put('/eliminarTripu',body).then(callback);
 	};
 }]);

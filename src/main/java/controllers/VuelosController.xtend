@@ -74,7 +74,7 @@ class VuelosController {
 	@Put("/eliminarTripu")
 	def Result eliminarTripu(@Body String body){
 		println(body)
-		var TripulanteVuelo tripuVuelo = body.fromJson(TripulanteVuelo)
+		var TripulanteVuelo tripuVuelo=body.fromJson(TripulanteVuelo)
 		var vuelo = RepoVuelos.instance.searchById(tripuVuelo.vuelo)
 		println(tripuVuelo.vuelo)
 		vuelo.eliminarTripulante(tripuVuelo.nombre)
