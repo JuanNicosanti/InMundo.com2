@@ -11,6 +11,8 @@ class RepoVuelos extends CollectionBasedHome<Vuelo> {
 	RepoTripulantes repoTripulantes = RepoTripulantes.getInstance()
 	var Set<Tripulante> tripulacion = newHashSet()
 	var Set<Tripulante> tripulacion2 = newHashSet()
+	var Set<Tripulante> tripulacion3 = newHashSet()
+	var Set<Tripulante> tripulacion4 = newHashSet()
 	
 	static RepoVuelos repoVuelos
 
@@ -44,9 +46,18 @@ class RepoVuelos extends CollectionBasedHome<Vuelo> {
 		var tripulacionString = newHashSet("Fernando","Florencia","Raul")
 		tripulacionString.forEach[tripulacion.add(repoTripulantes.searchByExample(new Tripulante(it)).head)]
 		this.create(new Vuelo("Y2MW321NKISS", tripulacion, "Paris", "Barcelona", "02/03/2016", false))
+		
 		var tripulacionString2 = newHashSet("Fernando","Sergio")
 		tripulacionString2.forEach[tripulacion2.add(repoTripulantes.searchByExample(new Tripulante(it)).head)]
 		this.create(new Vuelo("Y3MW123MXXAS", tripulacion2, "Ezeiza", "Cordoba", "08/09/2016", false))
+		
+		var tripulacionString3 = newHashSet("Fernando","Julian","Micaela")
+		tripulacionString3.forEach[tripulacion3.add(repoTripulantes.searchByExample(new Tripulante(it)).head)]
+		this.create(new Vuelo("Y5MH1653MXYAS", tripulacion3, "Madrid", "Milan", "22/12/2016", false))
+		
+		var tripulacionString4 = newHashSet("Fernando","Maria","Julian")
+		tripulacionString4.forEach[tripulacion4.add(repoTripulantes.searchByExample(new Tripulante(it)).head)]
+		this.create(new Vuelo("Y8KH1953MXFHN", tripulacion4, "Ezeiza", "El calafate", "29/10/2017", false))
 		
 	}
 	

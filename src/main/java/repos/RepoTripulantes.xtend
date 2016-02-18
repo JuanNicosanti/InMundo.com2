@@ -37,6 +37,10 @@ class RepoTripulantes extends CollectionBasedHome<Tripulante> {
 		this.create(new Tripulante("Raul", "Pena", "piloto"))
 		this.create(new Tripulante("Sergio", "Fernandez","piloto"))
 		this.create(new Tripulante("Fernando", "Alvarez", "copiloto"))
+		this.create(new Tripulante("Julian", "Mercado", "copiloto"))
 		this.create(new Tripulante("Florencia", "Suarez", "azafata"))
+		this.create(new Tripulante("Maria", "Mella", "azafata"))
+		this.create(new Tripulante("Micaela", "Fazio", "azafata"))
+		
 	}
 }

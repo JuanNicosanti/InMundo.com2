@@ -47,7 +47,13 @@ public class RepoTripulantes extends CollectionBasedHome<Tripulante> {
     this.create(_tripulante_1);
     Tripulante _tripulante_2 = new Tripulante("Fernando", "Alvarez", "copiloto");
     this.create(_tripulante_2);
-    Tripulante _tripulante_3 = new Tripulante("Florencia", "Suarez", "azafata");
+    Tripulante _tripulante_3 = new Tripulante("Julian", "Mercado", "copiloto");
     this.create(_tripulante_3);
+    Tripulante _tripulante_4 = new Tripulante("Florencia", "Suarez", "azafata");
+    this.create(_tripulante_4);
+    Tripulante _tripulante_5 = new Tripulante("Maria", "Mella", "azafata");
+    this.create(_tripulante_5);
+    Tripulante _tripulante_6 = new Tripulante("Micaela", "Fazio", "azafata");
+    this.create(_tripulante_6);
   }
 }

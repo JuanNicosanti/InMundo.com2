@@ -22,6 +22,10 @@ public class RepoVuelos extends CollectionBasedHome<Vuelo> {
   
   private Set<Tripulante> tripulacion2 = CollectionLiterals.<Tripulante>newHashSet();
   
+  private Set<Tripulante> tripulacion3 = CollectionLiterals.<Tripulante>newHashSet();
+  
+  private Set<Tripulante> tripulacion4 = CollectionLiterals.<Tripulante>newHashSet();
+  
   private static RepoVuelos repoVuelos;
   
   public static RepoVuelos getInstance() {
@@ -80,6 +84,30 @@ public class RepoVuelos extends CollectionBasedHome<Vuelo> {
     tripulacionString2.forEach(_function_1);
     Vuelo _vuelo_1 = new Vuelo("Y3MW123MXXAS", this.tripulacion2, "Ezeiza", "Cordoba", "08/09/2016", Boolean.valueOf(false));
     this.create(_vuelo_1);
+    HashSet<String> tripulacionString3 = CollectionLiterals.<String>newHashSet("Fernando", "Julian", "Micaela");
+    final Consumer<String> _function_2 = new Consumer<String>() {
+      public void accept(final String it) {
+        Tripulante _tripulante = new Tripulante(it);
+        List<Tripulante> _searchByExample = RepoVuelos.this.repoTripulantes.searchByExample(_tripulante);
+        Tripulante _head = IterableExtensions.<Tripulante>head(_searchByExample);
+        RepoVuelos.this.tripulacion3.add(_head);
+      }
+    };
+    tripulacionString3.forEach(_function_2);
+    Vuelo _vuelo_2 = new Vuelo("Y5MH1653MXYAS", this.tripulacion3, "Madrid", "Milan", "22/12/2016", Boolean.valueOf(false));
+    this.create(_vuelo_2);
+    HashSet<String> tripulacionString4 = CollectionLiterals.<String>newHashSet("Fernando", "Maria", "Julian");
+    final Consumer<String> _function_3 = new Consumer<String>() {
+      public void accept(final String it) {
+        Tripulante _tripulante = new Tripulante(it);
+        List<Tripulante> _searchByExample = RepoVuelos.this.repoTripulantes.searchByExample(_tripulante);
+        Tripulante _head = IterableExtensions.<Tripulante>head(_searchByExample);
+        RepoVuelos.this.tripulacion4.add(_head);
+      }
+    };
+    tripulacionString4.forEach(_function_3);
+    Vuelo _vuelo_3 = new Vuelo("Y8KH1953MXFHN", this.tripulacion4, "Ezeiza", "El calafate", "29/10/2017", Boolean.valueOf(false));
+    this.create(_vuelo_3);
   }
   
   public void crearVuelo(final String numeroDeVuelo, final Set<Tripulante> tripulacion, final String origenNuevo, final String destinoNuevo, final String fechaNueva, final Boolean finalizadoNuevo) {
