@@ -1,6 +1,6 @@
 
 		<div class="page-header">
-			<h1>Listado de tripulantes</h1>
+			<h1>Listado de tripulantes<small> de vuelo {{tripulacionCtrl.numeroDeVuelo}}</small></h1>
 		</div>
 <div class="col-lg-12">
 
@@ -21,7 +21,7 @@
 								<td class="col-xs-3">{{tripulante.nombre}}</td>
 								<td class="col-xs-3">{{tripulante.apellido}}</td>
 								<td class="col-xs-3">{{tripulante.tipoPuesto}}</td>
-								<td class="col-xs-1"><input type="button" class="btn btn-success" value="Eliminar" 
+								<td class="col-xs-1"><input type="button" class="btn btn-danger" value="Eliminar" 
 								ng-click="tripulacionCtrl.eliminarTripulante($index)" /></td>
 							</tr>
 						</tbody>
@@ -33,7 +33,7 @@
 				ng-click="agregarTripulante=true">
 				Agregar tripulante</button>
 						
-				<button type="button" class="btn btn-primary" data-toggle="modal"  aria-label="Agregar"
+				<button type="button" class="btn btn-primary" data-toggle="modal"  aria-label="Volver"
 				ng-click="tripulacionCtrl.volverAVuelos()"> Volver </button>
 				
 	<div class="modal-dialog" ng-show="agregarTripulante">

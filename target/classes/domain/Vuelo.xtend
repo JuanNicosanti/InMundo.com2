@@ -18,8 +18,9 @@ class Vuelo extends Entity {
 		tripulantes.add(tripulante)
 	}
 
-	def eliminarTripulante(Tripulante tripulante) {
-		tripulantes.remove(tripulante)
+	def eliminarTripulante(String nombre) {
+		var tripulanteABorrar = tripulantes.findFirst[it.nombre==nombre]
+		tripulantes.remove(tripulanteABorrar)
 	}
 
 	new(String numeroDeVuelo, Set<Tripulante> tripulacion, String origenNuevo, String destinoNuevo, String fechaNueva, Boolean finalizadoNuevo) {

@@ -1,10 +1,13 @@
 package domain;
 
+import com.google.common.base.Objects;
 import domain.Tripulante;
 import java.util.HashSet;
 import java.util.Set;
 import org.eclipse.xtend.lib.annotations.Accessors;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Pure;
 import org.uqbar.commons.model.Entity;
 
@@ -27,8 +30,19 @@ public class Vuelo extends Entity {
     return this.tripulantes.add(tripulante);
   }
   
-  public boolean eliminarTripulante(final Tripulante tripulante) {
-    return this.tripulantes.remove(tripulante);
+  public boolean eliminarTripulante(final String nombre) {
+    boolean _xblockexpression = false;
+    {
+      final Function1<Tripulante, Boolean> _function = new Function1<Tripulante, Boolean>() {
+        public Boolean apply(final Tripulante it) {
+          String _nombre = it.getNombre();
+          return Boolean.valueOf(Objects.equal(_nombre, nombre));
+        }
+      };
+      Tripulante tripulanteABorrar = IterableExtensions.<Tripulante>findFirst(this.tripulantes, _function);
+      _xblockexpression = this.tripulantes.remove(tripulanteABorrar);
+    }
+    return _xblockexpression;
   }
   
   public Vuelo(final String numeroDeVuelo, final Set<Tripulante> tripulacion, final String origenNuevo, final String destinoNuevo, final String fechaNueva, final Boolean finalizadoNuevo) {

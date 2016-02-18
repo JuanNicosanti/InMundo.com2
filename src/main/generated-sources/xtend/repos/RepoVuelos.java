@@ -16,9 +16,11 @@ import repos.RepoTripulantes;
 
 @SuppressWarnings("all")
 public class RepoVuelos extends CollectionBasedHome<Vuelo> {
-  private RepoTripulantes repoTripulantes;
+  private RepoTripulantes repoTripulantes = RepoTripulantes.getInstance();
   
-  private Set<Tripulante> tripulacionEnCurso = CollectionLiterals.<Tripulante>newHashSet();
+  private Set<Tripulante> tripulacion = CollectionLiterals.<Tripulante>newHashSet();
+  
+  private Set<Tripulante> tripulacion2 = CollectionLiterals.<Tripulante>newHashSet();
   
   private static RepoVuelos repoVuelos;
   
@@ -54,25 +56,34 @@ public class RepoVuelos extends CollectionBasedHome<Vuelo> {
   }
   
   public RepoVuelos() {
-    final HashSet<String> tripulacion = CollectionLiterals.<String>newHashSet("Fernando", "Florencia", "Raul");
-    final HashSet<String> tripulacion2 = CollectionLiterals.<String>newHashSet("Fernando", "Florencia", "Sergio");
-    this.crearVuelo("Y2MW321NKISS", tripulacion, "Paris", "Barcelona", "02/03/2016", Boolean.valueOf(false));
-    this.crearVuelo("Y3MW123MXXAS", tripulacion2, "Ezeiza", "Cordoba", "08/09/2016", Boolean.valueOf(false));
-  }
-  
-  public void crearVuelo(final String numeroDeVuelo, final Set<String> tripulacionEnString, final String origenNuevo, final String destinoNuevo, final String fechaNueva, final Boolean finalizadoNuevo) {
-    RepoTripulantes _instance = RepoTripulantes.getInstance();
-    this.repoTripulantes = _instance;
+    HashSet<String> tripulacionString = CollectionLiterals.<String>newHashSet("Fernando", "Florencia", "Raul");
     final Consumer<String> _function = new Consumer<String>() {
       public void accept(final String it) {
         Tripulante _tripulante = new Tripulante(it);
         List<Tripulante> _searchByExample = RepoVuelos.this.repoTripulantes.searchByExample(_tripulante);
-        Tripulante _get = _searchByExample.get(0);
-        RepoVuelos.this.tripulacionEnCurso.add(_get);
+        Tripulante _head = IterableExtensions.<Tripulante>head(_searchByExample);
+        RepoVuelos.this.tripulacion.add(_head);
       }
     };
-    tripulacionEnString.forEach(_function);
-    Vuelo _vuelo = new Vuelo(numeroDeVuelo, this.tripulacionEnCurso, origenNuevo, destinoNuevo, fechaNueva, finalizadoNuevo);
+    tripulacionString.forEach(_function);
+    Vuelo _vuelo = new Vuelo("Y2MW321NKISS", this.tripulacion, "Paris", "Barcelona", "02/03/2016", Boolean.valueOf(false));
+    this.create(_vuelo);
+    HashSet<String> tripulacionString2 = CollectionLiterals.<String>newHashSet("Fernando", "Sergio");
+    final Consumer<String> _function_1 = new Consumer<String>() {
+      public void accept(final String it) {
+        Tripulante _tripulante = new Tripulante(it);
+        List<Tripulante> _searchByExample = RepoVuelos.this.repoTripulantes.searchByExample(_tripulante);
+        Tripulante _head = IterableExtensions.<Tripulante>head(_searchByExample);
+        RepoVuelos.this.tripulacion2.add(_head);
+      }
+    };
+    tripulacionString2.forEach(_function_1);
+    Vuelo _vuelo_1 = new Vuelo("Y3MW123MXXAS", this.tripulacion2, "Ezeiza", "Cordoba", "08/09/2016", Boolean.valueOf(false));
+    this.create(_vuelo_1);
+  }
+  
+  public void crearVuelo(final String numeroDeVuelo, final Set<Tripulante> tripulacion, final String origenNuevo, final String destinoNuevo, final String fechaNueva, final Boolean finalizadoNuevo) {
+    Vuelo _vuelo = new Vuelo(numeroDeVuelo, tripulacion, origenNuevo, destinoNuevo, fechaNueva, finalizadoNuevo);
     this.create(_vuelo);
   }
   
