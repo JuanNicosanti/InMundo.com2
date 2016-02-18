@@ -19,4 +19,8 @@ app.service('vueloSeleccionadoService', [ '$http', function ($http){
 	this.eliminarTripu = function(body, callback) {
 		 return $http.put('/eliminarTripu',body).then(callback);
 	};
+	
+	this.agregarTripulante = function(body, callback){
+		return $http.post('/nuevoTripu',body).then(callback);
+	};
 }]);

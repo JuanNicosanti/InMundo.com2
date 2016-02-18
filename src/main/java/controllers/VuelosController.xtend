@@ -14,6 +14,7 @@ import org.uqbar.xtrest.api.annotation.Put
 import org.uqbar.xtrest.api.annotation.Body
 import domain.Tripulante
 import domain.TripulanteVuelo
+import org.uqbar.xtrest.api.annotation.Post
 
 @Controller
 class VuelosController {
@@ -48,28 +49,6 @@ class VuelosController {
 		vueloBuscado.numero = numero
 		ok(RepoVuelos.instance.searchByExample(vueloBuscado).toJson)
 	}
-
-	/**
-	@Put('/tareas/:id')
-	def Result actualizar(@Body String body) {
-		try {
-			val actualizado = body.fromJson(Vuelo)
-
-			val asignadoA = body.getPropertyValue("asignadoA")
-			val asignatario = RepoUsuarios.instance.allInstances.findFirst[it.nombre.equalsIgnoreCase(asignadoA)]
-			actualizado.asignarA(asignatario)
-
-			if (Integer.parseInt(id) != actualizado.id) {
-				return badRequest('{ "error" : "Id en URL distinto del cuerpo" }')
-			}
-
-			RepoTareas.instance.update(actualizado)
-			ok('{ "status" : "OK" }');
-		} catch (Exception e) {
-			badRequest(e.message)
-		}
-	}
-	*/
 	
 	@Put("/eliminarTripu")
 	def Result eliminarTripu(@Body String body){
@@ -81,9 +60,17 @@ class VuelosController {
 		println(vuelo.tripulantes.size())
 		response.contentType = ContentType.APPLICATION_JSON
 		ok(vuelo.toJson)
-		
 	}
-
+	
+	@Post("/nuevoTripu")	
+	def Result nuevoTripu(@Body String body){
+		var TripulanteVuelo tripuVuelo = body.fromJson(TripulanteVuelo)
+		var vuelo = RepoVuelos.instance.searchById(tripuVuelo.vuelo)
+		vuelo.agregarTripulante(new Tripulante(tripuVuelo.nombre,tripuVuelo.apellido, tripuVuelo.tipoPuesto))
+		response.contentType = ContentType.APPLICATION_JSON
+		ok(vuelo.toJson)
+	}
+	
 	@Get("/tripulantes")
 	def Result tripulantes() {
 		val tripulantes = RepoTripulantes.instance.allInstances

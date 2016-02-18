@@ -29,11 +29,51 @@
 
 				</div>
 				
-				<button type="button" class="btn btn-success" data-toggle="modal"  aria-label="Agregar">
+				<button type="button" class="btn btn-success" data-toggle="modal"  aria-label="Agregar"
+				ng-click="agregarTripulante=true">
 				Agregar tripulante</button>
 						
 				<button type="button" class="btn btn-primary" data-toggle="modal"  aria-label="Agregar"
 				ng-click="tripulacionCtrl.volverAVuelos()"> Volver </button>
+				
+	<div class="modal-dialog" ng-show="agregarTripulante">
+		<div class="modal-content">
+		<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">Nuevo Tripulante</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-signin" name="nuevoTripulanteForm" role="form">
+					<fieldset>
+						<div class="col-sm-6">
+							Nombre <input type="text" ng-model="nuevoTripulante.nombre"
+								class="form-control" placeholder="Nombre del tripulante"
+								autofocus required="true">
+							
+							Puesto <input type="text"
+								ng-model="nuevoTripulante.tipoPuesto" class="form-control"
+								placeholder="Puesto del tripulante">
+							
+						</div>
+						<div class="col-sm-6">
+						Apellido <input type="text"
+								ng-model="nuevoTripulante.apellido" class="form-control"
+								placeholder="Apellido del tripulante">
+						</div>
+						
+					</fieldset>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<div class=" col-md-9 text-center">
+					<button class="btn btn-lg btn-primary" data-dismiss="modal"
+						type="button"
+						data-ng-click="tripulacionCtrl.agregar();agregarTripulante=false">Aceptar</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="agregarTripulante=false">Cancelar</button>
+				</div>
+	</div>
+	</div>
 						
 				<div class="alert alert-danger animate-repeat"
 					ng-repeat="error in vuelosCtrl.errors">{{error}}</div>

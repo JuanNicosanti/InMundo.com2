@@ -27,11 +27,6 @@ app.controller('VuelosController', ['vuelosService', '$scope', '$state', functio
 	    }, 3000);
 	  };
 	
-//	  $scope.verVuelo = function(numero) {
-//    	  $state.go('tripulacionVuelo')
-//    	  $scope.numeroVueloSeleccionado = numero;
-//    	  self.getVueloSeleccionado();
-//        };  
 	function transformarAVuelo(jsonVuelo){
 		  return Vuelo.asVuelo(jsonVuelo);
 	  }
@@ -55,9 +50,15 @@ app.controller('tripulacionVueloController', function (vuelosService, vueloData,
 	
 	this.eliminarTripulante = function(index){
 		$scope.tripulante=index.nombre;
-		vueloSeleccionadoService.eliminarTripu({nombre:$scope.tripulantes[index].nombre, vuelo:self.vuelo.id});
+		vueloSeleccionadoService.eliminarTripu({nombre:$scope.tripulantes[index].nombre, 
+			apellido: $scope.tripulantes[index].apellido, tipoPuesto:$scope.tripulantes[index].tipoPuesto, vuelo:self.vuelo.id});
 		$scope.tripulantes.splice(index,1);
 	}
-	
+
+	this.agregar = function(){
+		vueloSeleccionadoService.agregarTripulante({nombre:$scope.nuevoTripulante.nombre,apellido:$scope.nuevoTripulante.apellido,
+		tipoPuesto:$scope.nuevoTripulante.tipoPuesto,vuelo:self.vuelo.id})
+		$scope.tripulantes.push($scope.nuevoTripulante);
+	}
+    
 });
-  

@@ -6,5 +6,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 class TripulanteVuelo {
 
 	String nombre
+	String apellido
+	String tipoPuesto
 	int vuelo
 }
